@@ -44,7 +44,7 @@ export default function Header() {
             </div>
           </div>
           <span className="font-black text-xl uppercase tracking-wide text-foreground">
-            StreamPay
+            FLOWPAY
           </span>
         </Link>
 

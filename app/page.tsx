@@ -20,7 +20,7 @@ import {
   BarChart3
 } from 'lucide-react';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -42,11 +42,26 @@ export default function Dashboard() {
   const [mounted, setMounted] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
+  const liveTips = useMemo(() => ([
+    '💡 Pro tip: Start with a template then tweak the stream rate.',
+    '⚡ Live mode: Use short durations to test payouts instantly.',
+    '🔒 Safety check: Review recipient address before confirming.'
+  ]), []);
+  const [tipIndex, setTipIndex] = useState(0);
+
   // Handle hydration properly
   useEffect(() => {
     setMounted(true);
     setIsClient(true);
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTipIndex((current) => (current + 1) % liveTips.length);
+    }, 3200);
+
+    return () => clearInterval(interval);
+  }, [liveTips.length]);
 
   // Only fetch data after component is mounted and on client
   const { sentStreams, receivedStreams } = useUserStreams(mounted && isClient ? address : undefined);
@@ -89,7 +104,7 @@ export default function Dashboard() {
           </div>
           
           <h1 className="text-3xl font-bold mb-4 bg-gradient-to-r from-somnia-500 to-somnia-700 bg-clip-text text-transparent">
-            Welcome to StreamPay
+            Welcome to FLOWPAY
           </h1>
           <p className="text-muted-foreground mb-8">
             Connect your wallet to start streaming payments in real-time on Somnia blockchain
@@ -164,6 +179,47 @@ export default function Dashboard() {
             </div>
           </CardContent>
         </Card>
+      </motion.div>
+
+
+      {/* Quick Launch Feature */}
+      <motion.div variants={itemVariants}>
+        <Card className="bg-gradient-to-r from-primary/15 via-secondary/10 to-accent/15 border-primary/50">
+          <CardContent className="p-6">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <h2 className="text-xl font-extrabold tracking-tight">Quick Launch Studio</h2>
+                <p className="text-sm text-foreground/90">
+                  New: rotating smart tips to help you build better payment streams faster.
+                </p>
+              </div>
+
+              <div className="rounded-lg border-2 border-foreground/70 bg-background/80 px-4 py-3 min-w-[280px]">
+                <p className="text-sm font-semibold">{liveTips[tipIndex]}</p>
+              </div>
+
+              <Button asChild variant="default">
+                <Link href="/create">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Launch New Stream
+                </Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+
+
+      {/* Live Ticker */}
+      <motion.div variants={itemVariants}>
+        <div className="relative overflow-hidden rounded-lg border-2 border-foreground bg-card py-3 neo-shadow">
+          <div className="animate-stream-flow whitespace-nowrap">
+            <span className="mx-8 text-sm font-bold text-foreground">🔴 LIVE • Stream creation active on FlowPay</span>
+            <span className="mx-8 text-sm font-bold text-foreground">⚡ Real-time payouts update every second</span>
+            <span className="mx-8 text-sm font-bold text-foreground">🛡️ Safer setup with AI-assisted creation</span>
+            <span className="mx-8 text-sm font-bold text-foreground">📈 Track performance in analytics dashboard</span>
+          </div>
+        </div>
       </motion.div>
 
       {/* Stats Grid */}
