@@ -13,7 +13,7 @@ import { Toaster } from 'react-hot-toast';
 import { somniaTestnet } from '@/lib/contracts';
 
 const config = getDefaultConfig({
-  appName: 'StreamPay',
+  appName: 'FlowPay',
   projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || 'default-project-id',
   chains: [somniaTestnet],
   ssr: true, // If your dApp uses server side rendering (SSR)
@@ -31,9 +31,36 @@ const queryClient = new QueryClient({
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = React.useState(false);
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
 
   React.useEffect(() => {
+    const updateTheme = () => {
+      const root = document.documentElement;
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const shouldUseDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+
+      if (shouldUseDark) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+
+      setIsDarkMode(root.classList.contains('dark'));
+    };
+
+    updateTheme();
     setMounted(true);
+
+    const observer = new MutationObserver(() => updateTheme());
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    media.addEventListener('change', updateTheme);
+
+    return () => {
+      observer.disconnect();
+      media.removeEventListener('change', updateTheme);
+    };
   }, []);
 
   if (!mounted) {
@@ -44,13 +71,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider
-          theme={darkTheme({
+          theme={(isDarkMode ? darkTheme : lightTheme)({
             accentColor: '#0ea5e9',
             accentColorForeground: 'white',
             borderRadius: 'medium',
           })}
           appInfo={{
-            appName: 'StreamPay',
+            appName: 'FlowPay',
             learnMoreUrl: 'https://somnia.network',
           }}
         >
