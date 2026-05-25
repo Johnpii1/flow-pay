@@ -92,6 +92,10 @@
   animation: stream-flow 2s linear infinite;
 }
 
+.animate-stream-flow-slow {
+  animation: stream-flow 6s linear infinite;
+}
+
 .animate-pulse-balance {
   animation: pulse-balance 1s ease-in-out infinite;
 }

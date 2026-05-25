@@ -171,7 +171,7 @@ export default function Dashboard() {
         </Card>
 
         <div className="relative overflow-hidden rounded-lg border-2 border-foreground bg-card py-3 neo-shadow">
-          <div className="animate-stream-flow whitespace-nowrap">
+          <div className="animate-stream-flow-slow whitespace-nowrap">
             <span className="mx-8 text-sm font-bold">🔴 LIVE • Welcome to FlowPay</span>
             <span className="mx-8 text-sm font-bold">⚡ Connect wallet to launch your first stream</span>
             <span className="mx-8 text-sm font-bold">🛡️ Secure on-chain payment automation</span>
@@ -180,14 +180,6 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="mt-10 relative overflow-hidden rounded-lg border-2 border-foreground bg-card py-3 neo-shadow">
-          <div className="animate-stream-flow whitespace-nowrap">
-            <span className="mx-8 text-sm font-bold">🔴 LIVE • Welcome to FlowPay</span>
-            <span className="mx-8 text-sm font-bold">⚡ Connect wallet to launch your first stream</span>
-            <span className="mx-8 text-sm font-bold">🛡️ Secure on-chain payment automation</span>
-            <span className="mx-8 text-sm font-bold">📈 Track stream activity in real time</span>
-          </div>
-        </div>
       </motion.div>
     );
   }
