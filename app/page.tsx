@@ -108,32 +108,75 @@ export default function Dashboard() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center py-16"
+        className="space-y-8 py-10"
       >
-        <div className="max-w-md mx-auto">
-          <Zap className="h-24 w-24 text-somnia-500 mx-auto mb-4" />
-
-          <h1 className="text-3xl font-bold mb-4">
-            Welcome to FLOWPAY
-          </h1>
-
-          <p className="text-muted-foreground mb-8">
-            Connect your wallet to start streaming payments in real-time
-          </p>
-
-          <div className="space-y-3 text-sm">
-            <div className="flex items-center justify-center gap-2">
-              <Clock className="h-4 w-4 text-somnia-500" />
-              Per-second payment streaming
+        <Card className="overflow-hidden border-2 border-somnia-500/30 bg-gradient-to-br from-somnia-500/10 via-background to-primary/5">
+          <CardContent className="p-8 md:p-10">
+            <div className="flex flex-wrap items-center gap-2 mb-5">
+              <Badge className="bg-somnia-500 text-white">NEW</Badge>
+              <Badge variant="outline">Realtime Settlement</Badge>
+              <Badge variant="outline">Creator Friendly</Badge>
             </div>
-            <div className="flex items-center justify-center gap-2">
-              <TrendingUp className="h-4 w-4 text-green-500" />
-              Real-time balance updates
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div className="text-left">
+                <h1 className="text-4xl md:text-5xl font-black leading-tight mb-4">
+                  Stream money every second with FlowPay
+                </h1>
+                <p className="text-muted-foreground text-lg mb-6">
+                  Launch subscriptions, salaries, and milestone payouts with fully transparent live balances.
+                </p>
+
+                <div className="flex flex-wrap gap-3">
+                  <Button asChild size="lg">
+                    <Link href="/create">
+                      <Plus className="h-4 w-4 mr-2" />
+                      Create First Stream
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outline" size="lg">
+                    <Link href="/templates">
+                      <BarChart3 className="h-4 w-4 mr-2" />
+                      Browse Templates
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <Card className="border-somnia-500/30">
+                  <CardContent className="p-4 text-center space-y-2">
+                    <Clock className="h-5 w-5 text-somnia-500 mx-auto" />
+                    <p className="text-xs text-muted-foreground">Settlement Speed</p>
+                    <p className="text-lg font-bold">Per-second</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-green-500/30">
+                  <CardContent className="p-4 text-center space-y-2">
+                    <TrendingUp className="h-5 w-5 text-green-500 mx-auto" />
+                    <p className="text-xs text-muted-foreground">Tracking</p>
+                    <p className="text-lg font-bold">Live Updates</p>
+                  </CardContent>
+                </Card>
+                <Card className="border-purple-500/30">
+                  <CardContent className="p-4 text-center space-y-2">
+                    <Activity className="h-5 w-5 text-purple-500 mx-auto" />
+                    <p className="text-xs text-muted-foreground">Use Cases</p>
+                    <p className="text-lg font-bold">Work + SaaS</p>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
-            <div className="flex items-center justify-center gap-2">
-              <Activity className="h-4 w-4 text-purple-500" />
-              Work, subscription & gaming streams
-            </div>
+          </CardContent>
+        </Card>
+
+        <div className="relative overflow-hidden rounded-lg border-2 border-foreground bg-card py-3 neo-shadow">
+          <div className="animate-stream-flow whitespace-nowrap">
+            <span className="mx-8 text-sm font-bold">🔴 LIVE • Welcome to FlowPay</span>
+            <span className="mx-8 text-sm font-bold">⚡ Connect wallet to launch your first stream</span>
+            <span className="mx-8 text-sm font-bold">🛡️ Secure on-chain payment automation</span>
+            <span className="mx-8 text-sm font-bold">📈 Track stream activity in real time</span>
+            <span className="mx-8 text-sm font-bold">💸 Build payroll, subscriptions, and rewards</span>
           </div>
         </div>
 
