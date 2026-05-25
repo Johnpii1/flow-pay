@@ -170,8 +170,8 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        <div className="relative overflow-hidden rounded-lg border-2 border-foreground bg-card py-3 neo-shadow">
-          <div className="animate-stream-flow whitespace-nowrap">
+        <div className="relative overflow-hidden rounded-lg border-2 border-border bg-card text-foreground py-3 neo-shadow">
+          <div className="animate-stream-flow-slow whitespace-nowrap">
             <span className="mx-8 text-sm font-bold">🔴 LIVE • Welcome to FlowPay</span>
             <span className="mx-8 text-sm font-bold">⚡ Connect wallet to launch your first stream</span>
             <span className="mx-8 text-sm font-bold">🛡️ Secure on-chain payment automation</span>
@@ -180,14 +180,6 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="mt-10 relative overflow-hidden rounded-lg border-2 border-foreground bg-card py-3 neo-shadow">
-          <div className="animate-stream-flow whitespace-nowrap">
-            <span className="mx-8 text-sm font-bold">🔴 LIVE • Welcome to FlowPay</span>
-            <span className="mx-8 text-sm font-bold">⚡ Connect wallet to launch your first stream</span>
-            <span className="mx-8 text-sm font-bold">🛡️ Secure on-chain payment automation</span>
-            <span className="mx-8 text-sm font-bold">📈 Track stream activity in real time</span>
-          </div>
-        </div>
       </motion.div>
     );
   }
@@ -266,8 +258,8 @@ export default function Dashboard() {
 
       {/* LIVE TICKER */}
       <motion.div variants={itemVariants}>
-        <div className="relative overflow-hidden rounded-lg border-2 border-foreground bg-card py-3 neo-shadow">
-          <div className="animate-stream-flow whitespace-nowrap">
+        <div className="relative overflow-hidden rounded-lg border-2 border-border bg-card text-foreground py-3 neo-shadow">
+          <div className="animate-stream-flow-slow whitespace-nowrap">
             <span className="mx-8 text-sm font-bold">🔴 LIVE • FlowPay active streaming</span>
             <span className="mx-8 text-sm font-bold">⚡ Real-time payouts every second</span>
             <span className="mx-8 text-sm font-bold">🛡️ Secure smart contract execution</span>
