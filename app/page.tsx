@@ -80,6 +80,7 @@ export default function Dashboard() {
   const { sentStreams, receivedStreams } = useUserStreams(
     mounted && isClient ? address : undefined
   );
+
   const { stats } = useProtocolStats();
   const { activeStreamIds } = useActiveStreams();
   const { recentEvents } = useStreamEvents();
@@ -89,11 +90,13 @@ export default function Dashboard() {
     return (
       <div className="animate-pulse space-y-8">
         <div className="h-32 bg-muted rounded-lg"></div>
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {[...Array(4)].map((_, i) => (
             <div key={i} className="h-24 bg-muted rounded-lg"></div>
           ))}
         </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="h-64 bg-muted rounded-lg"></div>
           <div className="h-64 bg-muted rounded-lg"></div>
@@ -123,6 +126,7 @@ export default function Dashboard() {
                 <h1 className="text-4xl md:text-5xl font-black leading-tight mb-4">
                   Stream money every second with FlowPay
                 </h1>
+
                 <p className="text-muted-foreground text-lg mb-6">
                   Launch subscriptions, salaries, and milestone payouts with fully transparent live balances.
                 </p>
@@ -134,6 +138,7 @@ export default function Dashboard() {
                       Create First Stream
                     </Link>
                   </Button>
+
                   <Button asChild variant="outline" size="lg">
                     <Link href="/templates">
                       <BarChart3 className="h-4 w-4 mr-2" />
@@ -147,21 +152,35 @@ export default function Dashboard() {
                 <Card className="border-somnia-500/30">
                   <CardContent className="p-4 text-center space-y-2">
                     <Clock className="h-5 w-5 text-somnia-500 mx-auto" />
-                    <p className="text-xs text-muted-foreground">Settlement Speed</p>
+
+                    <p className="text-xs text-muted-foreground">
+                      Settlement Speed
+                    </p>
+
                     <p className="text-lg font-bold">Per-second</p>
                   </CardContent>
                 </Card>
+
                 <Card className="border-green-500/30">
                   <CardContent className="p-4 text-center space-y-2">
                     <TrendingUp className="h-5 w-5 text-green-500 mx-auto" />
-                    <p className="text-xs text-muted-foreground">Tracking</p>
+
+                    <p className="text-xs text-muted-foreground">
+                      Tracking
+                    </p>
+
                     <p className="text-lg font-bold">Live Updates</p>
                   </CardContent>
                 </Card>
+
                 <Card className="border-purple-500/30">
                   <CardContent className="p-4 text-center space-y-2">
                     <Activity className="h-5 w-5 text-purple-500 mx-auto" />
-                    <p className="text-xs text-muted-foreground">Use Cases</p>
+
+                    <p className="text-xs text-muted-foreground">
+                      Use Cases
+                    </p>
+
                     <p className="text-lg font-bold">Work + SaaS</p>
                   </CardContent>
                 </Card>
@@ -170,16 +189,29 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        <div className="relative overflow-hidden rounded-lg border-2 border-foreground bg-card py-3 neo-shadow">
+        <div className="relative overflow-hidden rounded-lg border-2 border-border bg-card text-foreground py-3 neo-shadow">
           <div className="animate-stream-flow-slow whitespace-nowrap">
-            <span className="mx-8 text-sm font-bold">🔴 LIVE • Welcome to FlowPay</span>
-            <span className="mx-8 text-sm font-bold">⚡ Connect wallet to launch your first stream</span>
-            <span className="mx-8 text-sm font-bold">🛡️ Secure on-chain payment automation</span>
-            <span className="mx-8 text-sm font-bold">📈 Track stream activity in real time</span>
-            <span className="mx-8 text-sm font-bold">💸 Build payroll, subscriptions, and rewards</span>
+            <span className="mx-8 text-sm font-bold">
+              🔴 LIVE • Welcome to FlowPay
+            </span>
+
+            <span className="mx-8 text-sm font-bold">
+              ⚡ Connect wallet to launch your first stream
+            </span>
+
+            <span className="mx-8 text-sm font-bold">
+              🛡️ Secure on-chain payment automation
+            </span>
+
+            <span className="mx-8 text-sm font-bold">
+              📈 Track stream activity in real time
+            </span>
+
+            <span className="mx-8 text-sm font-bold">
+              💸 Build payroll, subscriptions, and rewards
+            </span>
           </div>
         </div>
-
       </motion.div>
     );
   }
@@ -199,6 +231,7 @@ export default function Dashboard() {
               <h1 className="text-3xl font-bold mb-2">
                 Welcome back 👋
               </h1>
+
               <p className="text-somnia-100">
                 Manage your real-time payment streams
               </p>
@@ -211,7 +244,11 @@ export default function Dashboard() {
                   </Link>
                 </Button>
 
-                <Button asChild variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-white/20 text-white hover:bg-white/10"
+                >
                   <Link href="/templates">
                     <BarChart3 className="h-4 w-4 mr-2" />
                     Templates
@@ -235,6 +272,7 @@ export default function Dashboard() {
               <h2 className="text-xl font-extrabold">
                 Quick Launch Studio
               </h2>
+
               <p className="text-sm text-muted-foreground">
                 Smart tips to build faster payment streams
               </p>
@@ -258,36 +296,57 @@ export default function Dashboard() {
 
       {/* LIVE TICKER */}
       <motion.div variants={itemVariants}>
-        <div className="relative overflow-hidden rounded-lg border-2 border-foreground bg-card py-3 neo-shadow">
-          <div className="animate-stream-flow whitespace-nowrap">
-            <span className="mx-8 text-sm font-bold">🔴 LIVE • FlowPay active streaming</span>
-            <span className="mx-8 text-sm font-bold">⚡ Real-time payouts every second</span>
-            <span className="mx-8 text-sm font-bold">🛡️ Secure smart contract execution</span>
-            <span className="mx-8 text-sm font-bold">📊 Analytics updating live</span>
+        <div className="relative overflow-hidden rounded-lg border-2 border-border bg-card text-foreground py-3 neo-shadow">
+          <div className="animate-stream-flow-slow whitespace-nowrap">
+            <span className="mx-8 text-sm font-bold">
+              🔴 LIVE • FlowPay active streaming
+            </span>
+
+            <span className="mx-8 text-sm font-bold">
+              ⚡ Real-time payouts every second
+            </span>
+
+            <span className="mx-8 text-sm font-bold">
+              🛡️ Secure smart contract execution
+            </span>
+
+            <span className="mx-8 text-sm font-bold">
+              📊 Analytics updating live
+            </span>
           </div>
         </div>
       </motion.div>
 
       {/* Stats Grid */}
-      <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <motion.div
+        variants={itemVariants}
+        className="grid grid-cols-1 md:grid-cols-4 gap-6"
+      >
         <Card>
           <CardHeader>
             <CardTitle>Total Streams</CardTitle>
           </CardHeader>
-          <CardContent>{stats?.totalStreams || 0}</CardContent>
+
+          <CardContent>
+            {stats?.totalStreams || 0}
+          </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
             <CardTitle>Active Streams</CardTitle>
           </CardHeader>
-          <CardContent>{stats?.activeStreams || 0}</CardContent>
+
+          <CardContent>
+            {stats?.activeStreams || 0}
+          </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
             <CardTitle>Total Volume</CardTitle>
           </CardHeader>
+
           <CardContent>
             {stats?.totalVolume
               ? `${formatWeiToEther(stats.totalVolume, 2)} STT`
@@ -299,6 +358,7 @@ export default function Dashboard() {
           <CardHeader>
             <CardTitle>Your Streams</CardTitle>
           </CardHeader>
+
           <CardContent>
             {(sentStreams?.length || 0) +
               (receivedStreams?.length || 0)}
@@ -313,6 +373,7 @@ export default function Dashboard() {
             <CardHeader>
               <CardTitle>Outgoing Streams</CardTitle>
             </CardHeader>
+
             <CardContent className="space-y-4 max-h-96 overflow-y-auto custom-scrollbar">
               {sentStreams?.slice().reverse().map((id) => (
                 <StreamCard
@@ -330,6 +391,7 @@ export default function Dashboard() {
             <CardHeader>
               <CardTitle>Incoming Streams</CardTitle>
             </CardHeader>
+
             <CardContent className="space-y-4 max-h-96 overflow-y-auto custom-scrollbar">
               {receivedStreams?.slice().reverse().map((id) => (
                 <StreamCard
