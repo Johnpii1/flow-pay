@@ -30,7 +30,6 @@ const queryClient = new QueryClient({
 });
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  const [mounted, setMounted] = React.useState(false);
   const [isDarkMode, setIsDarkMode] = React.useState(false);
 
   React.useEffect(() => {
@@ -50,8 +49,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
     };
 
     updateTheme();
-    setMounted(true);
-
     const observer = new MutationObserver(() => updateTheme());
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
     const media = window.matchMedia('(prefers-color-scheme: dark)');
@@ -62,10 +59,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
       media.removeEventListener('change', updateTheme);
     };
   }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <WagmiProvider config={config}>
